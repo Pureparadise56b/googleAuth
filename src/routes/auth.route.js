@@ -19,11 +19,13 @@ router
 router
   .route('/google/callback')
   .get(passport.authenticate('google'), (req, res) => {
+    res.cookie('access_token', req.user?.accessToken)
     res.redirect('/user/profile')
   })
 
 router.route('/logout').get((req, res) => {
   req.logout((error) => error && console.error('logout error: ', error))
+  res.clearCookie('access_token')
   res.redirect('/auth/login')
 })
 
