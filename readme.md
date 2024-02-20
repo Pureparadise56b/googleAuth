@@ -10,7 +10,7 @@
 1. for install necessary libraries
 
 ```console
-$ npm  install
+$ npm install
 ```
 
 2. start the project
