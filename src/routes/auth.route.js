@@ -12,14 +12,18 @@ router
   .get(
     passport.authenticate('google', { scope: ['profile', 'email'] }),
     (req, res) => {
-      res.send('login with google')
+      res.send('Error in login process')
     }
   )
 
 router
   .route('/google/callback')
   .get(passport.authenticate('google'), (req, res) => {
-    res.cookie('access_token', req.user?.accessToken)
+    res.cookie('access_token', req.user?.accessToken, {
+      expires: new Date(Date.now() + 60 * 60 * 24 * 2 * 1000),
+      httpOnly: true,
+      secure: true,
+    })
     res.redirect('/user/profile')
   })
 
