@@ -1,4 +1,4 @@
-module.exports = {
+const config = {
   apps : [
     {
       name: "my-app",
@@ -22,3 +22,5 @@ module.exports = {
     }
   ]
 }
+
+export default config
