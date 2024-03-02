@@ -25,14 +25,18 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm ci
-
-    - name: Display ENV_FILE secret value
-      run: echo "${{ secrets.ENV_FILE }}"
-
-    - name: Create .env file
-      run: |
-        echo "${{ secrets.ENV_FILE }}" > .env
-
-    # Optionally, you can add a step to verify the contents of the .env file
-    - name: Display .env file contents
-      run: cat .env
+    
+    - name: Make envfile
+      uses: SpicyPizza/create-envfile@v2.0
+      with:
+        envkey_DEBUG: false
+        envkey_MONGO_URL: ${{ secrets.MONGO_URL }}
+        envkey_PORT: "3000"
+        envkey_SESSION_KEY: ${{ secrets.SESSION_KEY }}
+        envkey_GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+        envkey_GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+        envkey_GOOGLE_REDIRECT_URL: ${{ secrets.GOOGLE_REDIRECT_URL }}
+        directory: /home/ubuntu/actions-runner-backend/_work/googleAuth/googleAuth
+        file_name: .env
+        fail_on_empty: false
+        sort_keys: false
