@@ -25,3 +25,11 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm ci
+
+    - name: Create .env file
+      run: |
+        echo "${{ secrets.ENV_FILE }}" > .env
+
+    # Optionally, you can add a step to verify the contents of the .env file
+    - name: Display .env file contents
+      run: cat .env
