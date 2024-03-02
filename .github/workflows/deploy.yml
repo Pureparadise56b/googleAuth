@@ -40,3 +40,5 @@ jobs:
         file_name: .env
         fail_on_empty: false
         sort_keys: false
+
+    - run: pm2 start ./config/ecosystem.config.cjs
