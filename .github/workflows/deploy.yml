@@ -36,7 +36,7 @@ jobs:
         envkey_GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
         envkey_GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
         envkey_GOOGLE_REDIRECT_URL: ${{ secrets.GOOGLE_REDIRECT_URL }}
-        directory: /home/ubuntu/actions-runner-backend/_work/googleAuth/googleAuth
+        directory: ./
         file_name: .env
         fail_on_empty: false
         sort_keys: false
