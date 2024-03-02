@@ -26,6 +26,9 @@ jobs:
         cache: 'npm'
     - run: npm ci
 
+    - name: Display ENV_FILE secret value
+      run: echo "${{ secrets.ENV_FILE }}"
+
     - name: Create .env file
       run: |
         echo "${{ secrets.ENV_FILE }}" > .env
