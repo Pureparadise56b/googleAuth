@@ -30,7 +30,7 @@ jobs:
       uses: SpicyPizza/create-envfile@v2.0
       with:
         envkey_DEBUG: false
-        envkey_MONGO_URL: ${{ secrets.MONGO_URL }}
+        envkey_MONGO_URI: ${{ secrets.MONGO_URL }}
         envkey_PORT: "3000"
         envkey_SESSION_KEY: ${{ secrets.SESSION_KEY }}
         envkey_GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
