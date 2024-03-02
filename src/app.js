@@ -30,6 +30,15 @@ app.use(passport.session())
 // Routes
 app.use('/auth', authRouter)
 app.use('/user', isLoggedIn, userRouter)
+app.get('/', (req, res)=>{
+  const token = req.cookies.access_token
+
+  if(token) {
+    res.redirect('/user/profile')
+  }else{
+    res.redirect('auth/login')
+  }
+})
 
 // TODO: take the accessToken and set it into the cookie and create a middleware that check the access token in cookies and varify the users
 
